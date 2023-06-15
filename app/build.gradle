@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
@@ -38,10 +38,33 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    ///////////////////////////////////////////////
+    //baselib
+//    implementation project(path: ':baselib')
+//    implementation 'com.alibaba:fastjson:1.2.31'
 
-//    implementation project(path: ':Alib')
-//    implementation project(path: ':Blib')
-    implementation project(path: ':Clib')
+    ///////////////////////////////////////////////
+    //baselibimp
+//    implementation project(path: ':baselibimp')
+//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 
-//    implementation files('libs/JarLib-debug.aar')
+    ///////////////////////////////////////////////
+    //aar; 如果aar包里有其他依赖包，主工程必须再次引入...
+//    api files('libs/libaar-debug.aar')
+//    implementation 'com.alibaba:fastjson:1.2.31'
+//    implementation 'com.google.code.gson:gson:2.8.8'
+//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+
+    ///////////////////////////////////////////////
+    //jar
+    api files('libs/libjar_classes.jar')
+//    api files('libs/libjar-sources.jar') //androidSourcesJar打包成的jar
+    implementation 'com.alibaba:fastjson:1.2.31'
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+    ///////////////////////////////////////////////
+//    //aarimp
+//    implementation project(path: ':libaarimp')
+
+
 }

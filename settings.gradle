@@ -8,8 +8,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "JarDemo"
 include ':app'
-include ':Alib'
-include ':Blib'
-include ':Clib'
+include ':baselibimp'
+include ':libaarimp'
+include ':baselib'
 include ':libjar'
 include ':libaar'

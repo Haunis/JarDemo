@@ -35,8 +35,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-//    implementation 'com.alibaba:fastjson:1.2.9' //可以使用不同版本
-    compileOnly 'com.alibaba:fastjson:1.2.31'
-    implementation 'com.google.code.gson:gson:2.8.8'
-    api 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+    implementation files('libs/libaar-debug.aar')
+    implementation 'com.alibaba:fastjson:1.2.31' //要引入libaar compileOnly引用的包
+    implementation 'com.google.code.gson:gson:2.8.8'//要引入libaar implementation 引用的包
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1' // //要引入libaar api 引用的包
 }

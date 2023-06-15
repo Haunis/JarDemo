@@ -1,4 +1,8 @@
-package com.jiage.libaar;
+package com.jiage.baselib;
+
+//import com.alibaba.fastjson.JSON;
+
+//import com.jiage.alib.AUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,14 +10,14 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
-public class AarUtils {
-    private volatile static AarUtils sInstance;//禁止指令重排
+public class BaseLibUtils {
+    private volatile static BaseLibUtils sInstance;//禁止指令重排
 
-    public static AarUtils getInstance() {
+    public static BaseLibUtils getInstance() {
         if (sInstance == null) {
-            synchronized (AarUtils.class) {
+            synchronized (BaseLibUtils.class) {
                 if (sInstance == null) {
-                    sInstance = new AarUtils();
+                    sInstance = new BaseLibUtils();
                 }
             }
         }

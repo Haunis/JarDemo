@@ -35,8 +35,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-//    implementation 'com.alibaba:fastjson:1.2.9' //可以使用不同版本
-    compileOnly 'com.alibaba:fastjson:1.2.31'
+    api 'com.alibaba:fastjson:1.2.9' //可以使用不同版本
+//    compileOnly 'com.alibaba:fastjson:1.2.31' //只参与编译，其他工程使用时必须用implementation或者api参与打包，否则运行会报错
     implementation 'com.google.code.gson:gson:2.8.8'
     api 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 }
