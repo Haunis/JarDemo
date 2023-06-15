@@ -1,16 +1,51 @@
 /*
- * gradle 引入jackjson：
+ * 一、gradle 引入jackjson：
  *      参考: https://stackoverflow.com/questions/69707268/jackson-not-being-imported-with-gradle
  *      implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
  *
- *  compileOnly: 只参与编译，运行时主工程要引入相应的依赖包，否则运行会报错
+ *  二、api、compileOnly、implementation、annotationProcessor区别
+ *      compileOnly:        只参与编译；对其他module不可见。运行时主工程要引入相应的依赖包，否则运行会报错。
+ *      implementation：    参与编译、打包，但对其他工程不可见
+ *      api：               和旧的compile一样，参与编译、打包，且其他module可见
+ *      annotationProcessor：和旧的apt一样，用来引入注解包
+ *      kapt:                kotlin工程不能使用annotationProcessor，要使用kapt
  *
- *  主工程使用依赖库：
+ *  三、jar包的打包方式:
+ *      方式1：module build
+ *            build/intermediates/aar_main_jar/debug/classes.jar 即是
+ *      方式2：使用jar命令打包
+ *          参考： https://www.python100.com/html/36938.html
+ *          jar命令路径：jdk-11.0.2/bin/jar
+ *          jar打包：
+ *              jar -cvf mylibjar.jar *   (在build/intermediates/javac/debug/classes路径下打包)
+ *              或者：
+ *              jar -cvf mylibjar.jar -C build/intermediates/javac/debug/classes/  . （classes目录下所有文件都打包进去）
+ *      方式3：module/build.gradle配置
+ *          参考： https://blog.csdn.net/zhaohan___/article/details/106625159
+ *                 https://blog.csdn.net/xiaoerbuyu1233/article/details/109285663
+ *          配置：
+ *              task androidSourcesJar(type: Jar) {
+                    classifier = 'sources'
+                    from android.sourceSets.main.java.srcDirs
+                }
+
+                //Put the androidSources to the artifacts
+                artifacts {
+                    archives androidSourcesJar
+                }
+             但打包出来的jar不能用....
+ *
+ *  四、aar包的打包方式
+ *      module-->build/assemble
+ *      build/outputs/aar/libaar-degug.aar即是
+ *
+ *
+ *  五、主工程使用【依赖库】注意事项
  *      1. 主工程不能直接使用依赖库中 compileOnly和implementation引用的包； 如果要用，主工程需单独引入
  *      2. 主工程使用的依赖库中有compileOnly引入的包时，主工程需要再次引入打包，否则运行会报错
  *      3. 主工程可以使用依赖库中api引用的包
  *
- *  主工程使用aar包：
+ *  六、主工程使用aar包注意事项：
  *      如果aar包引用了其他包，主工程必须再次引入，否则运行会报错
  */
 package com.jiage.jardemo;

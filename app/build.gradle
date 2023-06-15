@@ -57,8 +57,9 @@ dependencies {
 
     ///////////////////////////////////////////////
     //jar
-    api files('libs/libjar_classes.jar')
-//    api files('libs/libjar-sources.jar') //androidSourcesJar打包成的jar
+//    api files('libs/libjar_classes.jar')
+    api files('libs/mylibjar.jar') //jar -cvf mylibjar.jar *  打包而成
+//    api files('libs/libjar-sources.jar') //androidSourcesJar打包成的jar, 不能用
     implementation 'com.alibaba:fastjson:1.2.31'
     implementation 'com.google.code.gson:gson:2.8.8'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
